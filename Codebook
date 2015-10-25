@@ -1,4 +1,5 @@
 The is the codebook for run_analysis.
+The original data source and txt files come from the UCI HAR Dataset
 
 The following variables are used in run_analysis.R:
 
@@ -6,4 +7,17 @@ The following variables are used in run_analysis.R:
 2. testActivity is used for the dataframe created from the data from y_test.txt
 3. trainingData is used for the dataframe created from the data from x_train.txt
 4. trainingAcitivty is used for the dataframe created from the data from y_train.txt
+5. Features is used for the dataframe created from the data from features.txt
+6. allActivity describes the combination of data merged from testActivity and trainingActivity (in that order, from top to bottom)
+7. testSubset and trainSubset are used for the dataframes that remove all columns in testData and trainingData that do not involve mean or std features
+8. allSubjects includes the subject numbers merged from subject_test.txt and subject_train.txt
+9. df is the dataframe that combines subjects, activities, and the features from the testSubset and trainSubset
+10. df2 is the dataframe that describes the means of each feature for each activity per subject. The writetable function is used with this dataframe.
 
+With these variables, in the run_analysis script I first labeled the test and train data with the corresponding features as the column names.
+I then merged all activities into a single dataframe.
+I merged and then filtered the test and train data using grep1 across "mean" and "std" mentions in column titles.
+I filtered the test and train data before binding with the subject and activities so that the grep1 function would not remove the subject and activity columns.
+I added subject numbers and activities using cbind. 
+I created df2 using the dplyr library, grouping by subject and activity, and then using summarise_each to get the feature means.
+I used the write table function to create the tidyData.txt file.
