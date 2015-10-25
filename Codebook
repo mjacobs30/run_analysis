@@ -1,0 +1,9 @@
+The is the codebook for run_analysis.
+
+The following variables are used in run_analysis.R:
+
+1. testData is used for the dataframe created from the data from x_test.txt
+2. testActivity is used for the dataframe created from the data from y_test.txt
+3. trainingData is used for the dataframe created from the data from x_train.txt
+4. trainingAcitivty is used for the dataframe created from the data from y_train.txt
+
